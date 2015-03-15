@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Book, BookRent, RentingPerson
+from .models import Book, RentedBook, RentingPerson
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -14,10 +14,10 @@ class RentingPersonSerializer(serializers.ModelSerializer):
         model = RentingPerson
 
 
-class BookRentSerializer(serializers.ModelSerializer):
+class RentedBookSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = BookRent
+        model = RentedBook
 
 
 

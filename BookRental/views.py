@@ -2,18 +2,18 @@ from rest_framework import status
 from rest_framework import generics
 from rest_framework.response import Response
 
-from .models import Book, RentingPerson, BookRent
-from .serializers import BookSerializer, RentingPersonSerializer, BookRentSerializer
+from .models import Book, RentingPerson, RentedBook
+from .serializers import BookSerializer, RentingPersonSerializer, RentedBookSerializer
 
 
-class BookRentView(generics.ListCreateAPIView):
-    queryset = BookRent.objects.all()
-    serializer_class = BookRentSerializer
+class RentedBookView(generics.ListCreateAPIView):
+    queryset = RentedBook.objects.all()
+    serializer_class = RentedBookSerializer
 
 
-class BookRentDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = BookRent.objects.all()
-    serializer_class = BookRentSerializer
+class RentedBookDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = RentedBook.objects.all()
+    serializer_class = RentedBookSerializer
 
 
 class BookView(generics.ListCreateAPIView):

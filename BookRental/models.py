@@ -24,7 +24,7 @@ class Book(models.Model):
         return self.__unicode__()
 
 
-class BookRent(models.Model):
+class RentedBook(models.Model):
     rented_date = models.DateField(verbose_name='Data wypożyczenia')
     rental_days = models.IntegerField(verbose_name='Czas wypożyczenia')
 
