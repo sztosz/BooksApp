@@ -8,4 +8,4 @@ source /home/deploy/venv/books/bin/activate
 cd /home/deploy/www/BooksApp
 test -d $LOGDIR || mkdir -p $LOGDIR
 exec gunicorn -w ${NUM_WORKERS} --bind=${ADDRESS} --user=${USER} \
-	--log-level=error --log-file=${LOGFILE} 2>>${LOGFILE} BookApp.wsgi:application
+	--log-level=error --log-file=${LOGFILE} 2>>${LOGFILE} BooksApp.wsgi:application
