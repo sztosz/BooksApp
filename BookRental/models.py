@@ -14,7 +14,7 @@ class RentingPerson(models.Model):
 
 
 class Book(models.Model):
-    name = models.CharField(verbose_name='Nazwa książki', max_length=100)
+    title = models.CharField(verbose_name='Nazwa książki', max_length=100)
     isbn = models.CharField(verbose_name='ISBN', max_length=13)
 
     def __unicode__(self):
