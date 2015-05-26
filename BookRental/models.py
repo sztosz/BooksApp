@@ -1,3 +1,4 @@
+from datetime import timedelta, datetime
 from django.db import models
 
 
@@ -18,7 +19,7 @@ class Book(models.Model):
     isbn = models.CharField(verbose_name='ISBN', max_length=13)
 
     def __unicode__(self):
-        return '{0} - ISBN: {1}'.format(self.name, self.isbn)
+        return '{0}'.format(self.title)
 
     def __str__(self):
         return self.__unicode__()
@@ -30,7 +31,12 @@ class RentedBook(models.Model):
 
     renting_person = models.ForeignKey(RentingPerson)
 
-    book = models.ForeignKey(Book)
+    book = models.ForeignKey(Book, related_name='book_title')
+
+    def is_overdue(self):
+        if datetime.now().date() >= self.rented_date + timedelta(days=self.rental_days):
+            return True
+        return False
 
     def __unicode__(self):
         return '{0}: From {1}, for {2} days'.format(self.name, self.rented_date, self.rental_days)
